@@ -1,0 +1,107 @@
+﻿@model Paginated<vehicle>
+@{
+    ViewData["Title"] = "Index";
+}
+@*<div class="w-100 m-6">
+    <h1 class="text-center m-10 text-primary">Vehicles Details</h1>
+</div>*@
+
+<div class="container p-3">
+    <p class="text-center text-success font-weight-bold">@TempData["Success"]</p>
+    <div class="row p-2 ">
+        <div class="col-4">
+            <h3 class="text-primary">VEHICLES DETAILS</h3>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary text-primary" asp-controller="Vehicle" asp-action="UploadVehiclesFromExcel"><i class="bi bi-plus-circle"></i> Add New</a>
+        </div>
+        <div class="col-4">
+           
+            <form method="get" class="d-flex">
+                <input  asp-action="Index" name="SearchTerm" asp-controller="Vehicle" class="form-control text-primary me-sm-2" type="search" placeholder="Search Vehicle">
+                <a asp-action="Index" asp-controller="Vehicle" class="btn btn-secondary text-primary my-2 my-sm-0" type="submit" id="searchBtn"><i class="bi bi-search"></i></a>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container mt-1">
+    <table class="table table-bordered border="1" table-striped table-hover" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Registration No
+                </th>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Color
+                </th>
+                <th>
+                    Engine No
+                </th>
+                <th>
+                    Chasis No
+                </th>
+                <th>
+                    Date of Purchase
+                </th>
+                <th>
+                    Active
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.RegNo
+                    </td>
+                    <td>
+                        @item.Make
+                    </td>
+                    <td>
+                        @item.Model
+                    </td>
+                    <td>
+                        @item.Color
+                    </td>
+                    <td>
+                        @item.EngineNo
+                    </td>
+                    <td>
+                        @item.ChasisNo
+                    </td>
+                    <td>
+                        @item.DateOfPurchase
+                    </td>
+                    <td>
+                        @item.Active
+                    </td>
+                    <td role="group">
+                        <a asp-action="Edit" asp-controller="Vehicle" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-action="Delete" asp-controller="Vehicle" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@{
+    var prevDisable = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisable = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="Index" asp-route-pageNumber="@(Model.pageIndex-1)" class="btn btn-default text-primary @prevDisable">Previous</a>
+<a asp-action="Index" asp-route-pageNumber="@(Model.pageIndex+1)" class="btn btn-default text-primary @nextDisable">Next</a>
+
+

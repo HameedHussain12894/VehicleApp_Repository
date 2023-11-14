@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "UploadVehiclesFromExcel";
+}
+
+<h1 class="text-center text-primary">Upload File</h1>
+
+<div>
+    <a asp-action="Index" asp-controller="Vehicle" class="text-decoration-none text-primary btn btn-primary"><i class="bi bi-arrow-left-circle"></i> Back to Vehicle</a>
+</div>
+
+<form method="post" asp-action="UploadVehiclesFromExcel" asp-controller="Vehicle" enctype="multipart/form-data">
+
+    @*<div class="row">
+        <label class="text-primary">Select Excel FIle</label>
+        <input type="file" name="file" placeholder="Select File" class="text-primary"/>
+    </div>*@
+    <div class="d-flex align-items-center justify-content-center flex-column w-80 border-1 border-black">
+        <div class="form-group row">
+            <label for="formFile" class="form-label mt-4 text-primary">Input Excel File From Your Device</label>
+            <input class="form-control" type="file" name="file" id="formFile" accept=".xlsx,.xls" required>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-3">
+                <input type="submit" asp-action="UploadVehiclesFromExcel" asp-controller="Vehicle" class="btn btn-dark text-primary" value="Upload File" />
+            </div>
+        </div>
+    </div>
+   
+
+
+</form>

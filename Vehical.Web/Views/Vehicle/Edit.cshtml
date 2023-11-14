@@ -1,0 +1,72 @@
+﻿@model vehicle
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Edit Vehicle</h2>
+    </div>
+
+    <form method="post" asp-action="Edit">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="RegNo">Registraion No</label>
+                <input type="text" class="form-control mb-3" asp-for="RegNo">
+                <span asp-validation-for="RegNo" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Make">Created Year</label>
+                <input type="text" class="form-control mb-3" asp-for="Make">
+                <span asp-validation-for="Make" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Model">Model</label>
+                <input type="text" class="form-control mb-3" asp-for="Model">
+                <span asp-validation-for="Model" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label asp-for="Color">Color</label>
+                <input type="text" class="form-control" asp-for="Color">
+                <span asp-validation-for="Color" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="EngineNo">Engine No</label>
+                <input type="text" class="form-control mb-3" asp-for="EngineNo">
+                <span asp-validation-for="EngineNo" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label asp-for="ChasisNo">Chasis On</label>
+                <input type="text" class="form-control" asp-for="ChasisNo">
+                <span asp-validation-for="Color" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="DateOfPurchase">Date of Purchase</label>
+                <input type="datetime-local" class="form-control mb-3" asp-for="DateOfPurchase">
+                <span asp-validation-for="DateOfPurchase" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label asp-for="Active">Active</label>
+                <input type="text" class="form-control" asp-for="Active">
+                <span asp-validation-for="Active" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <input asp-action="Edit" asp-controller="Vehicle" class="btn btn-primary text-primary" value="Update" type="submit"/>
+       @* <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Update</button>*@
+        <a asp-controller="Vehicle" asp-action="Index" class="btn btn-lg btn-warning p-2">Back To Vehicle</a>
+    </form>
+
+</div>
+
+
